@@ -1,7 +1,7 @@
 User virtual env
 
 ```
-    mkvirtualenv orfeo 
+    mkvirtualenv orfeo
 ```
 
 or
@@ -13,3 +13,4 @@ or
 
 pip install -r requirements.txt
 
+heroku dep
