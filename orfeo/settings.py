@@ -91,16 +91,13 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 # Static asset configuration
-STATIC_ROOT = 'staticfiles'
+# STATIC_ROOT = '/static/'
 STATIC_URL = '/static/'
 
-
-
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, "static"),
 )
 
-LOGIN_REDIRECT_URL = '/'
 
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.google.GoogleOAuth2Backend',
@@ -117,15 +114,3 @@ SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL = '/login-error/'
-
-
-
-STATIC_ROOT = ''
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
-
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,'templates'),
-)

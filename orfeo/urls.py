@@ -12,5 +12,6 @@ urlpatterns = patterns('',
     url(r'^',include('apps.playlist.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('social_auth.urls')),
+    url(r'^',include('apps.search.urls')),
     url(r'^login/', login, name='login'),
 )
