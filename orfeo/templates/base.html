@@ -44,7 +44,7 @@
                     </li>
                     {% if user.is_authenticated %}
                         <li><a href="">{{ user }}</a></li>
-                        <li><a href=""> Cerrar sesión</a></li>
+                        <li><a href="{% url 'logout'%}"> Cerrar sesión</a></li>
                     {% else %}
 
                         <li><a href="{% url 'socialauth_begin' 'google-oauth2' %}">login</a></li>
@@ -73,7 +73,7 @@
 						   		<br>
 							    <form action="/search" method="get">
 										<div class="input-group">
-												<input type="search" name="q" placeholder="" class="form-control  search search_input">
+												<input type="search" name="q" placeholder="Busca y crea listas" class="form-control  search search_input">
 												<span class="input-group-btn ">
 													<button class="btn btn-default search" type="submit">Buscar</button>
 												</span>
@@ -87,20 +87,13 @@
         </div>
     </header>
 
+
     <!-- ............................................ ................................................................-->
-
-    {% if user.is_authenticated %}
-
     {% block content %}
 
-
-
-    <!-- Espacio disponible para el contenido general de la pagina   -->
-
-
-
-    {% endblock %}
-                        
+    {% if user.is_authenticated %}
+ 
+    <!-- Espacio disponible para el contenido general de la pagina   -->                        
     {% else %}
 
     <section class="container" id="listas">
@@ -135,6 +128,8 @@
                       
     {% endif %}
 
+
+    {% endblock %}
  	 
 
     

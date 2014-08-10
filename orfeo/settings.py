@@ -115,3 +115,5 @@ SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL = '/login-error/'
+
+LOGOUT_URL ="/"
