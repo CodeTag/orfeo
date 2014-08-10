@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'social_auth',
     'apps.playlist',
     'apps.songs',
+    'apps.auth',
 )
 
 MIDDLEWARE_CLASSES = (
