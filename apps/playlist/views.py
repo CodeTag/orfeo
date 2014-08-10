@@ -1,5 +1,6 @@
 from django.shortcuts import render, render_to_response
 from apps.playlist.models import Playlist
+from apps.auth.models import CustomUser
 from apps.playlist.forms import createPlaylistForm
 from django.template import RequestContext
 
@@ -8,9 +9,11 @@ def createPlaylist(request):
 	if request.method == 'POST':
 		form = createPlaylistForm(request.POST)
 	 	if form.is_valid():
+	 		customUser = CustomUser.objects.get(user= request.user)
 	 		playlist = Playlist()
 	 		playlist.name = form.cleaned_data['name']
 	 		playlist.genre = form.cleaned_data['genre']
+	 		playlist.user = customUser
 	 		playlist.save()
 	 		ctx = {'form':createPlaylistForm(), 'msg':'Lista creada exitosamente'}
 	 		return render_to_response('playlist_create.html', ctx, context_instance=RequestContext(request))
