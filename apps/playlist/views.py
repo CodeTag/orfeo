@@ -5,8 +5,7 @@ from django.template import RequestContext
 
 # Create your views here.
 def createPlaylist(request):
-	return render_to_response('home.html')
-	if request.methos == 'POST':
+	if request.method == 'POST':
 		form = createPlaylistForm(request.POST)
 	 	if form.is_valid():
 	 		add = form.save(commit=False)
@@ -14,7 +13,7 @@ def createPlaylist(request):
 	else:
 		form = createPlaylistForm()
 	ctx = {'form':form}
-	return render_to_response('index.html',ctx,context_instance=RequestContext(request))
+	return render_to_response('playlist_create.html',ctx,context_instance=RequestContext(request))
 
 	# if request.methos == 'GET':
 	# 	pass
