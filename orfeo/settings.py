@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'social_auth',
     'apps.playlist',
+    'apps.songs',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,6 +83,7 @@ USE_TZ = True
 
 
 # Parse database configuration from $DATABASE_URL
+
 # import dj_database_url
 # DATABASES['default'] =  dj_database_url.config()
 
