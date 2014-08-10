@@ -94,11 +94,11 @@ ALLOWED_HOSTS = ['*']
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
-<<<<<<< HEAD
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-=======
+
 LOGIN_REDIRECT_URL = '/'
 
 AUTHENTICATION_BACKENDS = (
@@ -117,4 +117,4 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL = '/login-error/'
 
->>>>>>> oauth
+
