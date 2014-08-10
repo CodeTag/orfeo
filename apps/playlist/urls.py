@@ -5,5 +5,6 @@ from apps.playlist import views
 urlpatterns = patterns('apps.playlist.views',
 	
 	url(r'^$', 'index_view',name="home"),
+	url(r'^playlist/create$', 'createPlaylist',name="createPlaylistView"),
 
 )
