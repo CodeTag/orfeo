@@ -5,7 +5,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from apiclient.discovery import build
 from optparse import OptionParser
-import json
+
+from apps.playlist.models import Playlist
+from apps.auth.models import CustomUser
 # Create your views here.
 
 DEVELOPER_KEY = "AIzaSyCchxKFBGhOmC-y7847rVbNjVep14nb2kk" # TODO move this to an env variable
@@ -25,6 +27,10 @@ def search(request):
     maxResults=request.GET.get('max') or 25
   ).execute()
 
-  print type(search_response)
+  ctx = {}
 
-  return render_to_response('search.html', {'results':search_response.get('items')}, RequestContext(request))
+  ctx['results'] = search_response.get('items')
+  if request.user.is_authenticated():
+    ctx['lists'] = Playlist.objects.filter(user=CustomUser.objects.get(user= request.user))
+
+  return render_to_response('search.html', ctx, RequestContext(request))

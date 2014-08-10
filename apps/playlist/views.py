@@ -1,9 +1,13 @@
 from django.shortcuts import render, render_to_response
 from apps.playlist.models import Playlist
 from apps.auth.models import CustomUser
+from apps.songs.models import Song
 from apps.playlist.forms import createPlaylistForm
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
 
 # Create your views here.
 @login_required()
@@ -19,7 +23,7 @@ def createPlaylist(request):
 	 		playlist.save()
 	 		ctx = {'form':createPlaylistForm(), 'msg':'Lista creada exitosamente'}
 	 		return render_to_response('playlist_create.html', ctx, context_instance=RequestContext(request))
-	 		
+
 	else:
 		form = createPlaylistForm()
 	ctx = {'form':form}
@@ -38,3 +42,20 @@ def readPlaylist(request):
 	playlist = Playlist.objects.all()
 	ctx = {"playlists":playlist}
 	return render_to_response('playlist.html',ctx,context_instance = RequestContext(request))
+
+@csrf_exempt
+def addSongToPlaylist(request):
+	listName = request.POST.get('listName')
+
+	songId = request.POST.get('songId')
+	songThumbnail = request.POST.get('songThumbnail')
+	songName = request.POST.get('songName')
+
+	song = Song(youtubeId=songId,name=songName,thumbnail=songThumbnail)
+	song.save()
+
+	playlist = Playlist.objects.get(name=listName, user=CustomUser.objects.get(user=request.user))
+
+	playlist.songs.add(song)
+
+	return HttpResponse('ok')

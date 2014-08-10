@@ -1,25 +1,50 @@
 {% extends "base.html" %}
 
 {% block content %}
-    
+
 <section class="container">
    <div class="col-lg-12">
      <h4 class="text-center">Resultados busqueda</h4>
 
-      <ul class="thumbnails">
         {% for result in results %}
-          <li class="col-lg-12">
-            <div class="thumbnail right-caption col-lg-12">
-              <img class="col-lg-2" src="{{ result.snippet.thumbnails.default.url }}" alt="">
-              <div class="caption">
-                <h5>{{ result.snippet.title }}</h5>
-                <p>{{ result.snippet.description }}</p>
-                <p><a href="https://www.youtube.com/watch?v={{ result.id.videoId }}" class="btn">Play</a></p>
+        <div class="media">
+          <a class="pull-left" href="#">
+            <img class="media-object" src="{{ result.snippet.thumbnails.default.url }}" alt="...">
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">{{ result.snippet.title }}</h4>
+            {{ result.snippet.description }}
+            <div class="btn-group">
+              {% if user.is_authenticated %}
+              <a href="https://www.youtube.com/watch?v={{ result.id.videoId }}?autoplay=1" class="glyphicon glyphicon-play" target="_blank"></a>
+              <a class="glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#popupBottom-{{ result.id.videoId }}"></a>
+              <div id="popupBottom-{{ result.id.videoId }}" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                  <div class="modal-header">
+                    <h5>Agrega {{ result.snippet.title }} a tus Listas</h5>
+                  </div>
+                  <div class="modal-body">
+                    <div class="list-group">
+                      {% for list in lists %}
+                      <a class="list-group-item list-add" data-list-name="{{ list.name }}" data-song-id="{{ result.id.videoId }}" data-song-name="{{ result.snippet.title }}" data-song-thumbnail="{{ result.snippet.thumbnails.default.url }}" href="#">
+                        <h4 class="list-group-item-heading">{{ list.name }}</h4>
+                      </a>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  </div>
+                </div>
               </div>
+              {% else %}
+              <!--  TODO change this link to a popup explainin why loging :P -->
+              <a href="/login/google-oauth2/" class="btn glyphicon glyphicon-play" role="button" target="_blank"></a>
+              <a href="/login/google-oauth2/" class="btn glyphicon glyphicon-plus-sign" role="button"></a>
+              {% endif %}
             </div>
-          </li>
+          </div>
+        </div>
         {% endfor %}
-      </ul>
 
   </div>
 </section>

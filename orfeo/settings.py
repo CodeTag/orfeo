@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'apps.playlist',
     'apps.songs',
     'apps.auth',
+    'apps.search',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -112,6 +113,8 @@ GOOGLE_CONSUMER_KEY          = ''
 GOOGLE_CONSUMER_SECRET       = ''
 GOOGLE_OAUTH2_CLIENT_ID      = '544131258425-46tb1igfofj4ijhha6eg1lsd6ikq9dk7.apps.googleusercontent.com'
 GOOGLE_OAUTH2_CLIENT_SECRET  = 'yled4NNElrceS0tWAGZPMG7p'
+
+GOOGLE_OAUTH_EXTRA_SCOPE = ['https://www.googleapis.com/auth/youtube']
 
 SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer'
 
