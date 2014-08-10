@@ -95,6 +95,7 @@ STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
@@ -118,3 +119,13 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL = '/login-error/'
 
 
+
+STATIC_ROOT = ''
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR,'templates'),
+)

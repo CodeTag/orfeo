@@ -13,7 +13,11 @@ def createPlaylist(request):
 	else:
 		form = createPlaylistForm()
 	ctx = {'form':form}
-	return render_to_response('home.html',ctx,context_instance=RequestContext(request))
+	return render_to_response('index.html',ctx,context_instance=RequestContext(request))
 
 	# if request.methos == 'GET':
 	# 	pass
+
+
+def index_view(request):
+	return render_to_response('index.html')
