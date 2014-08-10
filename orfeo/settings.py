@@ -37,12 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
-    'apps.playlist'
-=======
     'social_auth',
     'apps.playlist',
->>>>>>> oauth
 )
 
 MIDDLEWARE_CLASSES = (
