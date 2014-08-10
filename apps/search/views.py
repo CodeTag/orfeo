@@ -1,4 +1,7 @@
 from django.shortcuts import render, render_to_response
+from django.template import RequestContext
+from django.core.context_processors import csrf
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from apiclient.discovery import build
 from optparse import OptionParser
@@ -9,7 +12,7 @@ DEVELOPER_KEY = "AIzaSyCchxKFBGhOmC-y7847rVbNjVep14nb2kk" # TODO move this to an
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 
-
+@csrf_exempt
 def search(request):
   youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
   query = request.GET.get('q')
@@ -24,4 +27,4 @@ def search(request):
 
   print type(search_response)
 
-  return HttpResponse(json.dumps(search_response))
+  return render_to_response('search.html', {'results':search_response.get('items')}, RequestContext(request))

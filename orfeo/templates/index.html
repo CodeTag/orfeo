@@ -7,8 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/site.css">
     <link href="/static/css/font-awesome.css" rel="stylesheet" type="text/css">
-    
-    
+
+
     <title>Orfeo</title>
     {% endblock %}
 </head>
@@ -64,12 +64,14 @@
 						   	<div class=" col-lg-push-3 col-lg-6">
 						   		<h4 class="text-center">busca tu musica favorita</h4>
 						   		<br>
-							    <div class="input-group">
-							      <input type="search" placeholder="" class="form-control  search search_input">
-							      <span class="input-group-btn ">
-							        <button class="btn btn-default search" type="button">Buscar</button>
-							      </span>
-							    </div>
+										<form action="/search" method="get">
+									    <div class="input-group">
+										      <input type="search" name="q" placeholder="" class="form-control  search search_input">
+										      <span class="input-group-btn ">
+										        <button class="btn btn-default search" type="submit">Buscar</button>
+										      </span>
+									    </div>
+										</form>
 						  	</div>
 						</div>
                     </div>
@@ -83,7 +85,7 @@
  	 <section class="container">
 	   	<div class=" col-lg-push-3 col-lg-6">
 	   		<h4 class="text-center">Resultados busqueda</h4>
-	   		
+
 	  	</div>
 	</section>
 
@@ -102,20 +104,20 @@
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>	
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
             </div>
-          
+
         </div>
     </section>
 
-   
+
 
     <footer class="text-center">
         <div class="footer-above">
             <div class="container">
                 <div class="row">
-                    
+
                     <div class="footer-col col-md-12">
                         <h3>En la Web</h3>
                         <ul class="list-inline">
@@ -127,10 +129,10 @@
                             </li>
                             <li><a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
                             </li>
-                           
+
                         </ul>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -151,8 +153,8 @@
         </a>
     </div>
 
-   
-   
+
+
     <script src="/static/js/jquery-1.10.2.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
