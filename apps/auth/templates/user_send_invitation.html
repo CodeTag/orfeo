@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+	{% if msg %}
+		<div class="alert alert-info alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+		  <strong>Información</strong> {{msg}}
+		</div>
+	{% endif %}
+	{% if error %}
+		<div class="alert alert-danger alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+		  <strong>Advertencia!</strong> {{error}}
+		</div>
+	{% endif %}
+	<div class="form-container-user-send-invitation">
+		<form action="" method="POST" class="form">
+			{% csrf_token %}
+			<div class="form-group">
+				<div class="col-sm-10 col-md-offset-1">
+					<input class="form-control" type="text" placeholder="E-mail" name="email" id="id_email">
+				</div>
+			</div>
+			
+			<button type="submit" class="btn btn-primary btn-lg col-sm-8 col-md-offset-2">Enviar invitación</button>
+		</form>	
+	</div>
+{% endblock %}

@@ -29,9 +29,6 @@ def createPlaylist(request):
 	ctx = {'form':form}
 	return render_to_response('playlist_create.html',ctx,context_instance=RequestContext(request))
 
-	# if request.methos == 'GET':
-	# 	pass
-
 
 def index_view(request):
 	ctx = {'user': request.user}
