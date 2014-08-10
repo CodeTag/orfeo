@@ -73,7 +73,7 @@
 						   		<br>
 							    <form action="/search" method="get">
 										<div class="input-group">
-												<input type="search" name="q" placeholder="Busca y crea listas" class="form-control  search search_input">
+												<input type="search" name="q" placeholder="Busca canciones y crea listas" class="form-control  search search_input">
 												<span class="input-group-btn ">
 													<button class="btn btn-default search" type="submit">Buscar</button>
 												</span>
@@ -92,6 +92,15 @@
     {% block content %}
 
     {% if user.is_authenticated %}
+
+    <section id="listas">
+        <h4 class="text-center">Listas de reproducción</h4>
+        <br>
+        <a href="{% url 'readPlaylistView'%}"><button type="button" class="col-xs-push-1 col-xs-3  col-md-push-3 col-md-2 btn btn-default">Ver listas</button></a>
+        <a href="{% url 'createPlaylistView'%}"><button type="button" class="col-xs-push-1 col-xs-4  col-md-push-3 col-md-2 btn btn-default">Crear lista</button></a>
+        <a href=""><button type="button" class="col-xs-push-1 col-xs-4  col-md-push-3 col-md-2 btn btn-default">Eliminar lista</button></a>
+    </section>
+
  
     <!-- Espacio disponible para el contenido general de la pagina   -->                        
     {% else %}

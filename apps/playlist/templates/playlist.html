@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<section id="listas">
+	<br>
+	<h3 class="text-center">Listas de reproducción</h3>
+	<div class="row">
+	<div class="col-md-offset-1 col-md-push-2 col-md-6" id="playlist-form-container">
+		<div class="list-group">
+		{% if playlists %}
+		  	{% for p in playlists%}
+		  	<p class="text-center"><a class="list-group-item" href="">{{p.name}}</a></p>
+		  	{% endfor%}
+		{% else %}
+			<h5 class="list-group-item">No existen listas</h5>
+		{%endif%}
+        </div>              	
+	</div>
+	</div>
+</section>
+{% endblock %}

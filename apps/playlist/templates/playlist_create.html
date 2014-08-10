@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
+<section id="listas">
 	{% if msg %}
 		<div class="alert alert-info alert-dismissible" role="alert">
 		  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
 		  <strong>Información</strong> {{msg}}
 		</div>
 	{% endif %}
+	<br>
 	<h1 class="text-center">Crear lista de reproducción</h1>
 	<div class="row">
 	<div class="col-md-offset-1 col-md-10" id="playlist-form-container">
@@ -31,4 +33,5 @@
 		</form>
 	</div>
 	</div>
+</section>
 {% endblock %}
