@@ -117,3 +117,11 @@ header .intro-text .skills{
 .navbar-default .navbar-nav > li > a:hover{color:white;}
 
 .navbar-default .navbar-nav > .active > a{background-color: #233140 !important;}
+
+#playlist-form-container div{
+	margin: 0.5em 0;
+}
+
+#playlist-form-container button	{
+	margin-top: 1em;
+}

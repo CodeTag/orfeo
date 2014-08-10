@@ -8,8 +8,13 @@ def createPlaylist(request):
 	if request.method == 'POST':
 		form = createPlaylistForm(request.POST)
 	 	if form.is_valid():
-	 		add = form.save(commit=False)
-	 		add.save()
+	 		playlist = Playlist()
+	 		playlist.name = form.cleaned_data['name']
+	 		playlist.genre = form.cleaned_data['genre']
+	 		playlist.save()
+	 		ctx = {'form':createPlaylistForm(), 'msg':'Lista creada exitosamente'}
+	 		return render_to_response('playlist_create.html', ctx, context_instance=RequestContext(request))
+	 		
 	else:
 		form = createPlaylistForm()
 	ctx = {'form':form}
