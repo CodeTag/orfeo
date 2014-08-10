@@ -1,20 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
-<section id="listas">
+<section class="container text-center" id="listas">
 	<br>
 	<h3 class="text-center">Listas de reproducción</h3>
-	<div class="row">
-	<div class="col-md-offset-1 col-md-push-2 col-md-6" id="playlist-form-container">
+	<br>
+	<div class="col-md-12">
 		<div class="list-group">
 		{% if playlists %}
 		  	{% for p in playlists%}
-		  	<p class="text-center"><a class="list-group-item" href="">{{p.name}}</a></p>
+		  	<div class="btn-ntn-group breadcrumb">
+		  		<div class="row">
+				  	<p class="col-md-12 text-center" href="">{{p.name}}</p>
+				  	<a href=""><button type="button" class="btn btn-success col-md-push-5 col-md-1 ">Ver</button></a>
+				  	<a href="/playlist/delete/{{p.id}}"><button type="button" class="btn btn-danger col-md-push-5 col-md-1">Eliminar</button></a>
+			  	</div>
+		  	</div>
+
+
 		  	{% endfor%}
 		{% else %}
-			<h5 class="list-group-item">No existen listas</h5>
+			<h5 class="text-center list-group-item">No existen listas</h5>
 		{%endif%}
         </div>              	
-	</div>
 	</div>
 </section>
 {% endblock %}

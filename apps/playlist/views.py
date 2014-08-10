@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, get_object_or_404,redirect
 from apps.playlist.models import Playlist
 from apps.auth.models import CustomUser
 from apps.songs.models import Song
@@ -40,6 +40,7 @@ def readPlaylist(request):
 	ctx = {"playlists":playlist}
 	return render_to_response('playlist.html',ctx,context_instance = RequestContext(request))
 
+
 @csrf_exempt
 def addSongToPlaylist(request):
 	listName = request.POST.get('listName')
@@ -56,3 +57,12 @@ def addSongToPlaylist(request):
 	playlist.songs.add(song)
 
 	return HttpResponse('ok')
+
+def deletePlaylist(request, id_playlist):
+    playlist = get_object_or_404(Playlist, id=id_playlist)    
+    if request.method=='GET':
+        playlist.delete()
+    	return redirect('readPlaylistView')
+
+
+
