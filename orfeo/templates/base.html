@@ -42,11 +42,12 @@
                     <li class="page-scroll">
                         <a href="#listas">Listas</a>
                     </li>
-                    {% if user.is_authenticated%}
-                        <li><a href=""><span>{{ user }}</span> Cerrar sesión</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="">{{ user }}</a></li>
+                        <li><a href=""> Cerrar sesión</a></li>
                     {% else %}
 
-                        <li><a href="">login</a></li>
+                        <li><a href="{% url 'socialauth_begin' 'google-oauth2' %}">login</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -88,9 +89,23 @@
 
     <!-- ............................................ ................................................................-->
 
- 	 <section class="container" id="listas">
-	   	<div class=" col-lg-push-3 col-lg-6" >
-	   		<h4 class="text-center">Listas de reproducción</h4>
+    {% if user.is_authenticated %}
+
+    {% block content %}
+
+
+
+    <!-- Espacio disponible para el contenido general de la pagina   -->
+
+
+
+    {% endblock %}
+                        
+    {% else %}
+
+    <section class="container" id="listas">
+        <div class=" col-lg-push-3 col-lg-6" >
+            <h4 class="text-center">Listas de reproducción</h4>
             <br>
             <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder text-center">
@@ -115,18 +130,14 @@
             </div>
           </div>
 
-	  	</div>
-	</section>
+        </div>
+    </section>
+                      
+    {% endif %}
 
-    {% block content %}
+ 	 
 
-
-
-    <!-- Espacio disponible para el contenido general de la pagina   -->
-
-
-
-    {% endblock %}
+    
 
 
  	<!-- ............................................ ................................................................-->

@@ -1,6 +1,7 @@
 from django.shortcuts import render, render_to_response
 from apps.playlist.models import Playlist
 from apps.playlist.forms import createPlaylistForm
+from django.template import RequestContext
 
 # Create your views here.
 def createPlaylist(request):
@@ -20,4 +21,5 @@ def createPlaylist(request):
 
 
 def index_view(request):
-	return render_to_response('base.html')
+	ctx = {'user': request.user}
+	return render_to_response('base.html', ctx, context_instance=RequestContext(request))
